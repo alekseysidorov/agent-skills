@@ -98,9 +98,9 @@ one compact two-column table immediately below the title:
 ```
 
 `Status` and `Date` are the default fields. Status values should use a
-colored emoji together with a short text label. A useful default vocabulary is
-`🩶 Draft`, `🟡 Proposed`, `🔵 Accepted`, `🟢 Implemented`, `🟠 Superseded`, and
-`🔴 Deprecated`; preserve an established repository vocabulary when one exists.
+colored heart emoji together with a short text label. The default vocabulary is
+`🩶 Draft`, `💛 Review`, `💚 Accepted`, and `💔 Rejected`; preserve an
+established repository vocabulary when one exists.
 Add only fields that are important for that document, such as `Decision`,
 `Scope`, `Revision`, or `Related`; do not add personal authorship or
 environment-specific metadata by default. Do not retroactively rewrite
