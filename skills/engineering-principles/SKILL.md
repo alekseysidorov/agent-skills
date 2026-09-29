@@ -15,22 +15,25 @@ checking a list.
 
 ## Principles
 
-1. **Correctness over convenience — do not fabricate state.** Model the domain
-   truthfully. Do not invent values, hide meaningful differences, or permit
-   invalid states merely to simplify local code or force an answer.
-2. **Parse, don't validate.** Convert weakly structured or untrusted input into
+1. **Correctness over convenience.** Model the domain truthfully. Do not hide
+   meaningful differences or permit invalid states merely to simplify local
+   code.
+2. **Never fabricate domain data.** Missing information is information. Never
+   invent, substitute, hardcode, or silently default a value that does not exist
+   in the domain model.
+3. **Parse, don't validate.** Convert weakly structured or untrusted input into
    refined domain values at the boundary, preserve that knowledge, and let the
    core rely on it.
-3. **Functional core, imperative shell.** Keep domain decisions deterministic
+4. **Functional core, imperative shell.** Keep domain decisions deterministic
    and independent from I/O, frameworks, concurrency, and lifecycle. Effects
    belong at the boundary.
-4. **Make state, ownership, and transitions explicit.** Prefer values and local
+5. **Make state, ownership, and transitions explicit.** Prefer values and local
    mutation. Give mutable state and resources clear owners, and represent
    meaningful states directly.
-5. **Abstract only over real structure.** Abstract existing invariants, repeated
+6. **Abstract only over real structure.** Abstract existing invariants, repeated
    semantics, or genuine boundaries. Prefer composition; expose intentional
    semantic divergence instead of hiding it behind adapters.
-6. **Operational correctness is correctness.** A change is incomplete if its
+7. **Operational correctness is correctness.** A change is incomplete if its
    important behavior cannot be observed, diagnosed, safely operated, and
    reviewed in the resulting system.
 
