@@ -1,0 +1,140 @@
+---
+name: lightweight-spec-development
+description: Use when planning or implementing a meaningful feature whose intent, implementation boundaries, invariants, or acceptance checks should remain available to future humans and agents. Keep the workflow repository-native and low-ceremony; do not use for tiny fixes, obvious refactors, or formatting-only changes.
+metadata:
+  origin: original
+  maintainer: repository-maintainers
+---
+
+# Lightweight Spec Development
+
+Keep feature knowledge close to the repository without introducing a
+specification framework, generated registry, schema, database, or custom CLI.
+Use ordinary Markdown, Git, and the repository's existing documentation
+conventions.
+
+## The document model
+
+- **Work context (optional)** — active discussion, experiments, bugs, rollout
+  notes, and follow-ups in whatever tracker or repository-native place the
+  project actually uses. GitHub Issues are not required and are out of scope
+  unless the repository already relies on them.
+- **Design document** — the living description of how a meaningful feature
+  works now, together with the important architectural rationale. In
+  repositories that use `docs/decisions/`, this is normally where the document
+  belongs; it does not have to be called a feature document.
+- **Research document** — findings, experiments, comparisons, and evidence that
+  may inform a later decision but do not yet establish one. Keep these in the
+  repository's `docs/research/` location when it has one.
+- **Decision document** — durable explanation of why an important architectural
+  choice was made, normally in the repository's established `docs/decisions/`
+  location.
+- **Code** — the executable source of truth.
+
+Do not create a decision document merely because implementation happened. Use
+one when a durable architectural choice, boundary, or trade-off needs to be
+remembered. If an existing decision covers it, update or reference that
+decision instead of creating a duplicate.
+
+## When a feature document is warranted
+
+Create or update a design document when the change introduces meaningful behavior or an
+invariant, crosses module boundaries, has non-obvious implementation or
+operational semantics, needs concrete acceptance checks, or is likely to be
+revisited. Do not require one for tiny local fixes, obvious refactors,
+formatting, trivial dependency bumps, or self-explanatory code.
+
+Prefer one human-readable Markdown design document per meaningful feature or
+architectural change. Reuse the repository's existing `docs/decisions/` or
+equivalent design-document location. Keep research in `docs/research/` when
+that convention exists, and do not turn research into a decision until the
+evidence supports one. Do not introduce `docs/features/` merely because this
+skill mentions living feature descriptions; add a separate feature directory
+only when the repository has a real need for that distinction.
+
+## Workflow
+
+Before implementation:
+
+1. Inspect the related code and repository instructions.
+2. Read related feature documents and decisions; inspect their actual naming,
+   headers, dates, statuses, and section conventions.
+3. Read linked work context when it exists and is in scope; do not invent an
+   issue workflow for a repository that does not use one.
+4. Decide whether to create or update a design document, a research document,
+   or neither, and whether a durable decision has emerged.
+5. Keep the design within the actual requirement. Do not create documentation
+   ceremony to make a small change look formal.
+
+During implementation:
+
+- Keep the design or research document aligned with the work actually done.
+- Preserve important ownership, module-boundary, lifecycle, migration, and
+  operational details in `How`.
+- Keep `QA` concrete and observable: describe commands, scenarios, invariants,
+  or recovery checks, not only “tests pass”.
+- Prefer editing an existing relevant document over creating another one.
+
+After implementation:
+
+- Verify the QA conditions.
+- Describe the implemented system, not the abandoned plan.
+- Ensure the document does not claim behavior the code does not provide.
+- Keep temporary investigation history in the project's existing work context,
+  if it has one, rather than copying it into permanent documentation.
+
+## Design-document metadata
+
+For new design, decision, or research documents, prefer the
+repository's existing metadata convention. When introducing a convention, use
+one compact two-column table immediately below the title:
+
+```markdown
+| Field  | Value          |
+| ------ | -------------- |
+| Status | 🩶 Draft        |
+| Date   | 2026-09-30     |
+| Type   | Design         |
+```
+
+`Status` and `Date` are the default fields. Status values should use a
+colored emoji together with a short text label. A useful default vocabulary is
+`🩶 Draft`, `🟡 Proposed`, `🔵 Accepted`, `🟢 Implemented`, `🟠 Superseded`, and
+`🔴 Deprecated`; preserve an established repository vocabulary when one exists.
+Add only fields that are important for that document, such as `Decision`,
+`Scope`, `Revision`, or `Related`; do not add personal authorship or
+environment-specific metadata by default. Do not retroactively rewrite
+journals, runbooks, or research notes merely to make metadata uniform.
+
+## Design document shape
+
+Use this default only when it fits the repository. Do not add empty sections.
+
+```markdown
+# Design or feature name
+
+## Why
+The problem and reason this feature exists.
+
+## What
+Observable behavior, invariants, and important non-goals.
+
+## How
+Implementation details, ownership, boundaries, lifecycle, and constraints.
+
+## QA
+Concrete checks that demonstrate the intended behavior.
+```
+
+Optional sections such as `Operations`, `Migration`, `Out of scope`, or
+`Known limitations` are appropriate only when they carry useful information.
+
+## Principles
+
+- Optimize for low ceremony while preserving knowledge a future human or agent
+  actually needs.
+- Keep implementation details when they are necessary to understand or
+  validate the feature; do not shorten documentation into vague architecture
+  prose.
+- Repository conventions override this default model.
+- Do not invent missing facts or pretend an unverified plan is implemented.
