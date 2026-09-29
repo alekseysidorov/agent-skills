@@ -31,8 +31,8 @@ A design document describes the current system. A decision document explains
 why a durable choice was made. Research records evidence before that choice.
 Work context records the path taken.
 
-Keep these lifecycles distinct even when one Markdown document contains more
-than one kind of information. Do not create a decision document merely because
+Keep these roles conceptually distinct even when a repository combines some of
+them in one document. Do not create a decision document merely because
 implementation happened. Use one when a durable architectural choice,
 boundary, or trade-off needs to be remembered. If an existing decision covers
 it, update or reference that decision instead of creating a duplicate.
@@ -134,6 +134,10 @@ Optional sections such as `Operations`, `Migration`, `Out of scope`, or
 
 - Optimize for low ceremony while preserving knowledge a future human or agent
   actually needs.
+- Compress without semantic loss: remove repetition and prose ceremony, but
+  preserve distinctions, constraints, rationale, uncertainty, and operational
+  detail.
+- Prefer denser structure over shorter content.
 - Keep implementation details when they are necessary to understand or
   validate the feature; do not shorten documentation into vague architecture
   prose.
