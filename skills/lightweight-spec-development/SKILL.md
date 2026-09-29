@@ -15,50 +15,51 @@ conventions.
 
 ## The document model
 
-- **Work context (optional)** — active discussion, experiments, bugs, rollout
-  notes, and follow-ups in whatever tracker or repository-native place the
-  project actually uses. GitHub Issues are not required and are out of scope
-  unless the repository already relies on them.
-- **Design document** — the living description of how a meaningful feature
-  works now, together with the important architectural rationale. In
-  repositories that use `docs/decisions/`, this is normally where the document
-  belongs; it does not have to be called a feature document.
-- **Research document** — findings, experiments, comparisons, and evidence that
-  may inform a later decision but do not yet establish one. Keep these in the
-  repository's `docs/research/` location when it has one.
-- **Decision document** — durable explanation of why an important architectural
-  choice was made, normally in the repository's established `docs/decisions/`
-  location.
+- **Work context (optional)** — temporary history of active discussion,
+  experiments, bugs, rollout notes, and follow-ups in whatever tracker or
+  repository-native place the project actually uses. GitHub Issues are not
+  required and are out of scope unless the repository already relies on them.
+- **Research document** — evidence, experiments, and comparisons before a
+  durable choice is established.
+- **Design document** — the current intended or implemented system: behavior,
+  boundaries, invariants, and implementation details.
+- **Decision document** — the durable rationale for why an architectural choice
+  was made.
 - **Code** — the executable source of truth.
 
-Do not create a decision document merely because implementation happened. Use
-one when a durable architectural choice, boundary, or trade-off needs to be
-remembered. If an existing decision covers it, update or reference that
-decision instead of creating a duplicate.
+A design document describes the current system. A decision document explains
+why a durable choice was made. Research records evidence before that choice.
+Work context records the path taken.
 
-## When a feature document is warranted
+Keep these lifecycles distinct even when one Markdown document contains more
+than one kind of information. Do not create a decision document merely because
+implementation happened. Use one when a durable architectural choice,
+boundary, or trade-off needs to be remembered. If an existing decision covers
+it, update or reference that decision instead of creating a duplicate.
 
-Create or update a design document when the change introduces meaningful behavior or an
-invariant, crosses module boundaries, has non-obvious implementation or
+## When a design document is warranted
+
+Create or update a design document when the change introduces meaningful
+behavior or an invariant, crosses module boundaries, has non-obvious implementation or
 operational semantics, needs concrete acceptance checks, or is likely to be
 revisited. Do not require one for tiny local fixes, obvious refactors,
 formatting, trivial dependency bumps, or self-explanatory code.
 
 Prefer one human-readable Markdown design document per meaningful feature or
-architectural change. Reuse the repository's existing `docs/decisions/` or
-equivalent design-document location. Keep research in `docs/research/` when
-that convention exists, and do not turn research into a decision until the
-evidence supports one. Do not introduce `docs/features/` merely because this
-skill mentions living feature descriptions; add a separate feature directory
-only when the repository has a real need for that distinction.
+architectural change. Reuse the repository's established design-document
+location. If none exists, keep the document close to related architectural
+documentation. Keep research in the repository's established research
+location, and do not turn research into a decision until the evidence supports
+one. Do not introduce `docs/features/` merely because this skill mentions
+design documents.
 
 ## Workflow
 
 Before implementation:
 
 1. Inspect the related code and repository instructions.
-2. Read related feature documents and decisions; inspect their actual naming,
-   headers, dates, statuses, and section conventions.
+2. Read related design documents, research, and decisions; inspect their actual
+   naming, headers, dates, statuses, and section conventions.
 3. Read linked work context when it exists and is in scope; do not invent an
    issue workflow for a repository that does not use one.
 4. Decide whether to create or update a design document, a research document,
