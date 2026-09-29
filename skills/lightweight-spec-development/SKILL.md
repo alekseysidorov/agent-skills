@@ -86,9 +86,11 @@ After implementation:
 
 ## Design-document metadata
 
-For new design, decision, or research documents, prefer the
+For time-bound design, decision, research, and journal documents, prefer the
 repository's existing metadata convention. When introducing a convention, use
-one compact two-column table immediately below the title:
+one compact two-column table immediately below the title. Do not add metadata
+to timeless references, runbooks, indexes, or descriptive documentation merely
+for visual uniformity:
 
 ```markdown
 | Field  | Value          |
