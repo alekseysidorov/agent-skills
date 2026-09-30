@@ -100,8 +100,11 @@ for visual uniformity:
 | Type   | Design         |
 ```
 
-`Status` and `Date` are the default fields. Status values should use a
-colored heart emoji together with a short text label. The default vocabulary is
+`Date` is the default field for time-bound documents. Use `Status` only when
+the document has a meaningful decision or review lifecycle; journal entries
+normally need no status because their chronology and evidence are the source
+of truth. When status is appropriate, use a colored heart emoji together with
+a short text label. The default vocabulary is
 `🩶 Draft`, `💛 Review`, `💚 Accepted`, and `💔 Rejected`; preserve an
 established repository vocabulary when one exists.
 Add only fields that are important for that document, such as `Decision`,
